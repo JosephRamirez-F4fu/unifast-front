@@ -1,0 +1,44 @@
+
+<div class="flex justify-center  content-center p-8 pt-64 ">
+    <form [formGroup]="myform" (ngSubmit)="login()">
+
+    <mat-card appearance="outlined" class="p-4">
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>telefono</mat-label>
+                <input matInput type="text" formControlName="username" >
+                <mat-error *ngIf="controlHasError('username', 'required')">
+                    campo requerido</mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>contraseña</mat-label>
+                <input matInput 
+                [type]="passwordVisible ? 'text' : 'password'"
+                formControlName="password" >
+                
+                <mat-icon matSuffix (click)="passwordVisible = !passwordVisible">
+                    {{ passwordVisible ? 'visibility_off' : 'visibility' }}
+                </mat-icon>
+
+                <mat-error *ngIf="controlHasError('password', 'required')">
+                    campo requerido</mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions class="flex justify-center">
+            <button mat-raised-button color="primary" [disabled]="!myform.valid">Ingresar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
+</div>
+
+
+
+
+  
+
+<router-outlet/>

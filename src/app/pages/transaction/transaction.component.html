@@ -1,0 +1,79 @@
+<div>
+  <mat-toolbar color="primary" class="flex justify-around">
+    <button (click)="goToMenu()">
+      <mat-icon>menu</mat-icon>
+      Menu
+    </button>
+
+    <button>
+      <mat-icon>account_balance</mat-icon>
+      Realizar Transaccion
+    </button>
+
+    <button
+    (click)="closeSession">
+        <mat-icon>exit_to_app</mat-icon>
+        cerrar sesion
+    </button>
+  </mat-toolbar>
+</div>
+
+<div class="flex justify-center content-center p-8 pt-64">
+  <form [formGroup]="form" (ngSubmit)="makeTransaction()">
+    <mat-card appearance="outlined" class="p-4">
+      <mat-card-header>
+        <mat-card-title>Transaccion</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>telefono de contacto</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="subjectAccountPhoneNumber"
+          />
+          <mat-error
+            *ngIf="controlHasError('subjectAccountPhoneNumber', 'required')"
+          >
+            campo requerido</mat-error
+          >
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-content
+        ><mat-form-field appearance="fill">
+          <mat-label>Monto</mat-label>
+          <input matInput type="text" formControlName="amount" />
+          <mat-error *ngIf="controlHasError('amount', 'required')">
+            campo requerido</mat-error
+          >
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de Transaccion</mat-label>
+          <input matInput type="text" formControlName="transactionType" />
+          <mat-error *ngIf="controlHasError('transactionType', 'required')">
+            campo requerido</mat-error
+          >
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Mensaje</mat-label>
+          <input matInput type="text" formControlName="message" />
+          <mat-error *ngIf="controlHasError('message', 'required')">
+            campo requerido</mat-error
+          >
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions class="flex justify-center">
+        <button mat-raised-button color="primary" [disabled]="!form.valid">
+          Ingresar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
+
+<router-outlet />
