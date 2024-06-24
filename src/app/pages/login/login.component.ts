@@ -44,7 +44,6 @@ export class LoginComponent {
       .then(() => {
         this.showSnackBar('Bienvenido a Unifast');
         this.service.getUserInfo().then((user) => {});
-        this.router.navigate(['/menu']);
       })
       .catch(() => {
         this.showSnackBar('Usuario o contraseña incorrectos');
@@ -55,5 +54,9 @@ export class LoginComponent {
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,
     });
+  }
+
+  goToSignUp() {
+    this.router.navigate(['/signup']);
   }
 }

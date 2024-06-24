@@ -1,5 +1,5 @@
 
-<div class="flex justify-center  content-center p-8 pt-64 ">
+<div class="flex  justify-center  content-center p-8 pt-64 ">
     <form [formGroup]="myform" (ngSubmit)="login()">
 
     <mat-card appearance="outlined" class="p-4">
@@ -34,10 +34,21 @@
         </mat-card-actions>
     </mat-card>
 </form>
+
+
+
 </div>
 
 
 
+<div class="flex  justify-center  content-center ">
+    <mat-card class ="p-4">
+        <mat-card-content>
+            <p>No tienes una cuenta?</p>
+        </mat-card-content>
+        <button mat-raised-button color="accent"  (click)="goToSignUp()">Registrarse</button>
+    </mat-card>
+    </div>
 
   
 

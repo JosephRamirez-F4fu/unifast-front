@@ -57,4 +57,8 @@ export class SignupComponent {
         this.showSnackBar('Error al realizar el registro');
       });
   }
+
+  gotoLogin() {
+    this.router.navigate(['/login']);
+  }
 }

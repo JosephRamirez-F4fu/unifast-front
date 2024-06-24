@@ -13,7 +13,10 @@ import {
   providedIn: 'root',
 })
 export class ServiceUnifast {
-  private url = 'http://app01:5000/api/v1';
+  private dev = true;
+  private url = this.dev
+    ? 'http://localhost:5000/api/v1'
+    : 'https://app01:5000/api/v1';
   private router = inject(Router);
   user: UserResponse | null = null;
   Transactions: [TransactionResponse] | null = null;
@@ -84,6 +87,7 @@ export class ServiceUnifast {
       if (response.ok) {
         const userInfo: UserResponse = await response.json();
         this.user = userInfo;
+        this.router.navigate(['/menu']);
         return this.user;
       } else {
         this.router.navigate(['/login']);
